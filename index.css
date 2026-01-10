@@ -18,7 +18,7 @@ body {
   position: relative; /* важно для позиционирования родителей */
 }
 
-/* ребенок(центр) */
+/* блок ребенок*/
 .sofia {
   display: flex;
   flex-direction: column;
@@ -33,18 +33,18 @@ body {
   object-fit: cover;
 }
 
-.name {
+.name-sofia {
   margin-top: 12px;
   font-size: 14px;
   font-weight: bold;
 }
 
-.birth {
+.birth-sofia {
   font-size: 10px;
   color: #666;
 }
 
-/*отец(справа)*/
+/*блок отец*/
 .dad {
   position: absolute;
   left: calc(50% + 140px); /* одинаковое расстояние от центра */
@@ -69,19 +69,19 @@ body {
   height: 2px;
   background-color: #333;
 }
-.name1 {
+.name-vova {
   margin-top: 12px;
   font-size: 14px;
   font-weight: bold;
   font-family: Arial, sans-serif;
 }
-.birth1 {
+.birth-vova {
   margin-top: 4px; /* как у .birth */
   font-size: 10px; /* одинаковый размер */
   color: #666; /* одинаковый цвет */
   font-family: Arial, sans-serif;
 }
-/* мать (слева)*/
+/*блок мать */
 .mommy {
   position: absolute;
   right: calc(50% + 140px); /* симметрично от центра */
@@ -106,15 +106,52 @@ body {
   height: 2px;
   background-color: #333;
 }
-.name2 {
+.name-lenara {
   margin-top: 12px;
   font-size: 14px;
   font-weight: bold;
   font-family: Arial, sans-serif;
 }
-.birth2 {
+.birth-lenara {
   margin-top: 4px; /* как у .birth */
   font-size: 10px; /* одинаковый размер */
   color: #666; /* одинаковый цвет */
   font-family: Arial, sans-serif;
+}
+.dad img,
+.mommy img {
+  height: 120px;
+  width: 120px;
+  object-fit: cover;
+}
+
+.dad::after,
+.mommy::after {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.sofia,
+.dad,
+.mommy {
+  cursor: pointer;
+}
+
+.name-sofia,
+.name-vova,
+.name-lenara {
+  letter-spacing: 1px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.birth-sofia,
+.birth-vova,
+.birth-lenara {
+  font-style: italic;
+}
+
+.sofia,
+.dad,
+.mommy {
+  padding: 10px;
 }
