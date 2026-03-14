@@ -7,6 +7,12 @@
   box-sizing: border-box;
 }
 
+.mommy img,
+.dad img {
+  width: 100px;
+  height: 100px;
+}
+
 /* Центр экрана + база для абсолютных элементов */
 body {
   min-height: 100vh;
@@ -15,35 +21,121 @@ body {
   align-items: center;
   background-color: bisque;
   font-family: Arial, sans-serif;
-  position: relative;
+  position: relative; /* важно для позиционирования родителей */
 }
 
-/* =========================
-   ОБЩИЕ БЛОКИ ЛЮДЕЙ
-========================= */
-.sofia,
-.dad,
-.mommy {
+/* блок ребенок*/
+.sofia {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  padding: 10px;
-  cursor: pointer;
+  position: relative; /* центр композиции */
 }
 
-.sofia img,
-.dad img,
-.mommy img {
+.sofia img {
   width: 120px;
   height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.name-sofia {
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.birth-sofia {
+  font-size: 10px;
+  color: #666;
+}
+
+/* Чтобы карточка выглядела кликабельной */
+.sofia {
+  cursor: pointer;
+}
+/*блок отец*/
+.dad {
+  position: absolute;
+  left: calc(50% + 140px); /* одинаковое расстояние от центра */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Линия от отца к ребёнку */
+.dad::after {
+  content: "";
+  position: absolute;
+  left: -70px; /* линия идёт к центру */
+  top: 50px; /* центр фото */
+  width: 70px; /* ровно до Софии */
+  height: 2px;
+  background-color: #333;
+}
+.name-vova {
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+.birth-vova {
+  margin-top: 4px; /* как у .birth */
+  font-size: 10px; /* одинаковый размер */
+  color: #666; /* одинаковый цвет */
+  font-family: Arial, sans-serif;
+}
+/*блок мать */
+.mommy {
+  position: absolute;
+  right: calc(50% + 140px); /* симметрично от центра */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Линия от матери к ребёнку */
+.mommy::after {
+  content: "";
+  position: absolute;
+  right: -70px; /* линия идёт к центру */
+  top: 50px;
+  width: 70px;
+  height: 2px;
+  background-color: #333;
+}
+.name-lenara {
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+.birth-lenara {
+  margin-top: 4px; /* как у .birth */
+  font-size: 10px; /* одинаковый размер */
+  color: #666; /* одинаковый цвет */
+  font-family: Arial, sans-serif;
+}
+.dad img,
+.mommy img {
+  height: 120px;
+  width: 120px;
   object-fit: cover;
   border-radius: 50%;
 }
 
-/* =========================
-   ИМЕНА
-========================= */
+.dad::after,
+.mommy::after {
+  top: 30%;
+  transform: translateY(-50%);
+}
+
+.sofia,
+.dad,
+.mommy {
+  cursor: pointer;
+}
+
 .name-sofia,
 .name-vova,
 .name-lenara {
@@ -57,9 +149,6 @@ body {
   font-family: "Segoe UI", Arial, Helvetica, sans-serif;
 }
 
-/* =========================
-   ДАТЫ РОЖДЕНИЯ
-========================= */
 .birth-sofia,
 .birth-vova,
 .birth-lenara {
@@ -69,50 +158,67 @@ body {
   color: #555;
   letter-spacing: 0.6px;
   text-align: center;
+}
+
+.birth-sofia,
+.birth-vova,
+.birth-lenara {
   font-style: italic;
 }
 
-/* =========================
-   РЕБЁНОК
-========================= */
-.sofia {
-  /* центр композиции */
-}
-
-/* =========================
-   ОТЕЦ
-========================= */
-.dad {
-  position: absolute;
-  left: calc(50% + 140px);
-}
-
-.dad::after {
-  content: "";
-  position: absolute;
-  left: -70px;
-  top: 30%;
-  transform: translateY(-50%);
-  width: 70px;
-  height: 2px;
-  background-color: #333;
-}
-
-/* =========================
-   МАТЬ
-========================= */
+.sofia,
+.dad,
 .mommy {
-  position: absolute;
-  right: calc(50% + 140px);
+  padding: 10px;
 }
 
-.mommy::after {
-  content: "";
+/* Попап фон */
+/* Попап скрыт по умолчанию */
+.popup-sofia,
+.popup-vova,
+.popup-lenara {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Когда активен */
+.popup-sofia.active,
+.popup-vova.active,
+.popup-lenara.active {
+  display: flex;
+}
+/* Окно */
+.popup-content {
+  background: #fff;
+  padding: 25px;
+  width: 320px;
+  border-radius: 12px;
+  position: relative;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Крестик */
+.popup-close {
   position: absolute;
-  right: -70px;
-  top: 30%;
-  transform: translateY(-50%);
-  width: 70px;
-  height: 2px;
-  background-color: #333;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Анимация */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

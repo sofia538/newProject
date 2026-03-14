@@ -1,44 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <!--блок "ребенок" -->
-    <title>Sofia</title>
-    <link rel="stylesheet" href="index.css" />
-  </head>
-  <body>
-    <div class="sofia">
-      <div class="container-img-sofia">
-        <img src="imgs\photo\sofia.jpg" alt="Sofia Photo" />
-      </div>
-      <div class="sofia-info">
-        <div class="name-sofia">София <br />Владимировна <br />Дубинина</div>
-        <div class="birth-sofia">25.03.2011</div>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <!--блок "ребенок" -->
+  <title>Sofia</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+<div class="sofia">
+  <div class="container-img-sofia">
+    <img src="imgs\photo\sofia.jpg" alt="Sofia Photo" />
+  </div>
+  <div class="sofia-info">
+    <div class="name-sofia">София <br />Владимировна <br />Дубинина</div>
+    <div class="birth-sofia">25.03.2011</div>
+  </div>
+  <!-- Попап -->
+  <div class="popup-sofia" id="popup-sofia">
+    <div class="popup-content">
+      <span class="popup-close">&times;</span>
+      <h2>София Владимировна Дубинина</h2>
+      <p>Дата рождения: 25.03.2011</p>
+      <p>Место рождения:Республика Крым,Советский р-н,с Николаевка,50</p>
+      <p>Образование: МБОУ "Чапаевкая СШ"</p>
+      <p>Интересы и хобби:Кулинария,волейбол</p>
     </div>
-    <!-- блок "отец" -->
-    <div class="dad">
-      <div class="container-img-vova">
-        <img src="imgs\photo\vova.jpg" alt="Vova Photo" />
-      </div>
-      <div class="dad-info">
-        <div class="name-vova">
-          Владимир<br />
-          Викторович<br />
-          Дубинин
-        </div>
-        <div class="birth-vova">27.03.1990</div>
-      </div>
+  </div>
+
+  <script src="index.js"></script>
+</div>
+
+<!-- блок "отец" -->
+<div class="dad">
+  <div class="container-img-vova">
+    <img src="imgs\photo\vova.jpg" alt="Vova Photo" />
+  </div>
+  <div class="dad-info">
+    <div class="name-vova">
+      Владимир<br />
+      Викторович<br />
+      Дубинин
     </div>
-    <!-- "блок "мать" -->
-    <div class="mommy">
-      <div class="container-img-lenara">
-        <img src="imgs\photo\lenara.jpg" alt="Lenara Photo" />
-      </div>
-      <div class="mommy-info">
-        <div class="name-lenara">Ленара <br />Анатольевна <br />Дубинина</div>
-        <div class="birth-lenara">28.02.1992</div>
-      </div>
+    <div class="birth-vova">27.03.1990</div>
+  </div>
+  <!-- Попап -->
+  <div class="popup-vova" id="popup-vova">
+    <div class="popup-content">
+      <span class="popup-close">&times;</span>
+      <h2>Владимир Дубинин Викторович</h2>
+      <p>Дата рождения: 27.03.1990</p>
+      <p>
+        Место рождения:Республика Крым,Советский р-н,с Николаевка,Гагарина
+        23
+      </p>
+      <p>Образование:инженер-строитель</p>
+      <p>Интересы и хобби:машиностроение,строительство</p>
     </div>
-  </body>
+  </div>
+</div>
+<!-- "блок "мать" -->
+<div class="mommy">
+  <div class="container-img-lenara">
+    <img src="imgs\photo\lenara.jpg" alt="Lenara Photo" />
+  </div>
+  <div class="mommy-info">
+    <div class="name-lenara">Ленара <br />Анатольевна <br />Дубинина</div>
+    <div class="birth-lenara">28.02.1992</div>
+  </div>
+  <!-- Попап -->
+  <div class="popup-lenara" id="popup-lenara">
+    <div class="popup-content">
+      <span class="popup-close">&times;</span>
+      <h2>Ленара Анатольевна Дубинина</h2>
+      <p>Дата рождения: 28.02.1992</p>
+      <p>Место рождения:Республика Крым,Сакский р-н,с Митяево,Садовая 46</p>
+      <p>Образование:среднее-техническое</p>
+      <p>Интересы и хобби:Кулинария,овощевод-плодощевод</p>
+    </div>
+  </div>
+</div>
+</body>
 </html>
